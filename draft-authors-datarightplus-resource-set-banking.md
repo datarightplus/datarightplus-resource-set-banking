@@ -44,7 +44,7 @@ This specification utilises the various terms outlined within [@!DATARIGHTPLUS-R
 
 Technical authorisation scopes are defined between Provider and Initiator and permit access to resource server endpoints. In addition, this specification also outlines the title and a simple description of the language to use to describe the data set referred to as Data Set Language.
 
-Providers and Initiators **MUST** utilise the prescribed authorisation scopes and Data Set Language when seeking Consumer authorisation:
+Providers and Initiators **SHALL** utilise the prescribed authorisation scopes and Data Set Language when seeking Consumer authorisation:
 
 | `scope` value                | Data Set Language                                                                                                         |
 |------------------------------|---------------------------------------------------------------------------------------------------------------------------|
@@ -75,9 +75,9 @@ Providers and Initiators **MUST** utilise the prescribed authorisation scopes an
 
 In certain situations multiple technical scopes overlap which can lead to confusion by the User granting permission for the Consumer (which may be themselves or an Entity they represent).
 
-Data Cluster Language presentation **MUST** be collapsed for the following pairs of `scope` values:
+Data Cluster Language presentation **SHALL** be collapsed for the following pairs of `scope` values:
 
-| `scope` pairing                  | Data Set Language               |
+| `scope` pairing                | Data Set Language               |
 |--------------------------------|---------------------------------|
 | `bank:accounts.basic:read` and | **Account balance and details** |
 | `bank:accounts.detail:read`    | Name of account;                |
@@ -96,13 +96,13 @@ Providers are **REQUIRED** to deliver a number of authorisation and resource ser
 
 ## Authorisation Server
 
-In addition to other provisions incorporated within the relevent ecosystem set, the Provider authorisation server **MUST**:
+In addition to other provisions incorporated within the relevent ecosystem set, the Provider authorisation server **SHALL**:
 
 1. Support the `scope` parameters outlined within [Authorisation Scopes];
 
 ## Resource Server
 
-The Provider **MUST** deliver the following authorisation enabled endpoints, in accordance with [@!DATARIGHTPLUS-REDOCLY]:
+The Provider **SHALL** deliver the following authorisation enabled endpoints, in accordance with [@!DATARIGHTPLUS-REDOCLY]:
 
 | Resource Server Endpoint                                         | Authorisation Scope          | OpenAPI Operation ID                    | `x-v`            |
 |------------------------------------------------------------------|------------------------------|-----------------------------------------|------------------|
@@ -122,12 +122,12 @@ The Provider **MUST** deliver the following authorisation enabled endpoints, in 
 | `GET /banking/accounts/{accountId}/transactions`                 | `bank:transactions:read`     | `getTransactions`                       | `1`              |
 | `GET /banking/accounts/{accountId}/transactions/{transactionId}` | `bank:transactions:read`     | `getTransactionDetail`                  | `1`              |
 
-In addition the Provider **MUST** deliver the following unauthenticated and generally available endpoints, in accordance with [@!DATARIGHTPLUS-REDOCLY]:
+In addition the Provider **SHALL** deliver the following unauthenticated and generally available endpoints, in accordance with [@!DATARIGHTPLUS-REDOCLY]:
 
-| HTTP Endpoint            | OpenAPI Operation ID | `x-v` |
-|--------------------------|----------------------|-------|
-| `GET /banking/products` | `listBankingProducts`         | `2`   |
-| `GET /banking/products/{productId}`  | `getBankingProductDetail`          | `3` and `4`   |
+| HTTP Endpoint                       | OpenAPI Operation ID      | `x-v`       |
+|-------------------------------------|---------------------------|-------------|
+| `GET /banking/products`             | `listBankingProducts`     | `2`         |
+| `GET /banking/products/{productId}` | `getBankingProductDetail` | `3` and `4` |
 
 # Initiators
 
