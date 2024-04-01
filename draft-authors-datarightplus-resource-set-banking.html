@@ -1174,7 +1174,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
       <h2 id="name-providers">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-providers" class="section-name selfRef">Providers</a>
       </h2>
-<p id="section-3-1">Providers are <span class="bcp14">REQUIRED</span> to deliver a number of authorisation and resource server capabilities.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-1">Providers which providing banking services are expected to deliver a number of resource server end points.<a href="#section-3-1" class="pilcrow">¶</a></p>
 <div id="authorisation-server">
 <section id="section-3.1">
         <h3 id="name-authorisation-server">
@@ -1190,8 +1190,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
           <h4 id="name-authorisation-scopes">
 <a href="#section-3.1.1" class="section-number selfRef">3.1.1. </a><a href="#name-authorisation-scopes" class="section-name selfRef">Authorisation Scopes</a>
           </h4>
-<p id="section-3.1.1-1">Possible <code>scope</code> values to be provided by the Initiator to the Provider are documented below. In addition, this specification also outlines the title and a simple description of the language to use to describe the data set referred to as Data Set Language.<a href="#section-3.1.1-1" class="pilcrow">¶</a></p>
-<p id="section-3.1.1-2">Providers and Initiators <span class="bcp14">SHALL</span> utilise the prescribed authorisation scopes and Data Set Language when seeking Consumer authorisation:<a href="#section-3.1.1-2" class="pilcrow">¶</a></p>
+<p id="section-3.1.1-1">The Provider authorisation server <span class="bcp14">SHALL</span> utilise the following Data Set Language when seeking Consumer authorisation from a User for specific <code>scope</code> values:<a href="#section-3.1.1-1" class="pilcrow">¶</a></p>
 <table class="center" id="table-1">
             <caption><a href="#table-1" class="selfRef">Table 1</a></caption>
 <thead>
@@ -1321,8 +1320,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         <h3 id="name-overlapping-scope-optimisat">
 <a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-overlapping-scope-optimisat" class="section-name selfRef">Overlapping Scope Optimisation</a>
         </h3>
-<p id="section-3.2-1">In certain situations multiple technical scopes overlap which can lead to confusion by the User granting permission for the Consumer (which may be themselves or an Entity they represent).<a href="#section-3.2-1" class="pilcrow">¶</a></p>
-<p id="section-3.2-2">Data Cluster Language presentation <span class="bcp14">SHALL</span> be collapsed for the following pairs of <code>scope</code> values:<a href="#section-3.2-2" class="pilcrow">¶</a></p>
+<p id="section-3.2-1">Alternative Data Cluster Language <span class="bcp14">SHALL</span> be used when pairs of <code>scope</code> value are used as follows:<a href="#section-3.2-1" class="pilcrow">¶</a></p>
 <table class="center" id="table-2">
           <caption><a href="#table-2" class="selfRef">Table 2</a></caption>
 <thead>
@@ -1387,14 +1385,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
         <h3 id="name-resource-server">
 <a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-resource-server" class="section-name selfRef">Resource Server</a>
         </h3>
-<p id="section-3.3-1">The Provider <span class="bcp14">SHALL</span> deliver the following authorisation enabled endpoints, in accordance with <span>[<a href="#DATARIGHTPLUS-REDOCLY" class="cite xref">DATARIGHTPLUS-REDOCLY</a>]</span>:<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.3-1">The Provider <span class="bcp14">SHALL</span> make available, as described further in <span>[<a href="#DATARIGHTPLUS-REDOCLY-ID1" class="cite xref">DATARIGHTPLUS-REDOCLY-ID1</a>]</span> endpoints, the following endpoints where the token is granted the <code>bank:accounts.basic:read</code> scope value:<a href="#section-3.3-1" class="pilcrow">¶</a></p>
 <table class="center" id="table-3">
           <caption><a href="#table-3" class="selfRef">Table 3</a></caption>
 <thead>
             <tr>
               <th class="text-left" rowspan="1" colspan="1">Resource Server Endpoint</th>
-              <th class="text-left" rowspan="1" colspan="1">Authorisation Scope</th>
-              <th class="text-left" rowspan="1" colspan="1">OpenAPI Operation ID</th>
               <th class="text-left" rowspan="1" colspan="1">
                 <code>x-v</code>
 </th>
@@ -1406,38 +1402,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
                 <code>GET /banking/accounts</code>
 </td>
               <td class="text-left" rowspan="1" colspan="1">
-                <code>bank:accounts.basic:read</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
-                <code>listBankingAccounts</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
                 <code>1</code> and <code>2</code>
 </td>
             </tr>
             <tr>
               <td class="text-left" rowspan="1" colspan="1">
-                <code>GET /banking/accounts/{accountId}</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
-                <code>bank:accounts.detail:read</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
-                <code>getBankingAccountDetail</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
-                <code>1</code>, <code>2</code> and <code>3</code>
-</td>
-            </tr>
-            <tr>
-              <td class="text-left" rowspan="1" colspan="1">
                 <code>GET /banking/accounts/balances</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
-                <code>bank:accounts.basic:read</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
-                <code>listBankingBalancesBulk</code>
 </td>
               <td class="text-left" rowspan="1" colspan="1">
                 <code>1</code>
@@ -1448,12 +1418,6 @@ svg :is([fill="white"], [fill^="#fff"]) {
                 <code>POST /banking/accounts/balances</code>
 </td>
               <td class="text-left" rowspan="1" colspan="1">
-                <code>bank:accounts.basic:read</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
-                <code>listBalancesSpecificBankingAccounts</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
                 <code>1</code>
 </td>
             </tr>
@@ -1462,24 +1426,48 @@ svg :is([fill="white"], [fill^="#fff"]) {
                 <code>GET /banking/accounts/{accountId}/balance</code>
 </td>
               <td class="text-left" rowspan="1" colspan="1">
-                <code>bank:accounts.basic:read</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
-                <code>getBankingBalance</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
                 <code>1</code>
 </td>
             </tr>
+          </tbody>
+        </table>
+<p id="section-3.3-3">The Provider <span class="bcp14">SHALL</span> make available, as described further in <span>[<a href="#DATARIGHTPLUS-REDOCLY-ID1" class="cite xref">DATARIGHTPLUS-REDOCLY-ID1</a>]</span> endpoints, the following endpoints where the token is granted the <code>bank:accounts.detail:read</code> scope value:<a href="#section-3.3-3" class="pilcrow">¶</a></p>
+<table class="center" id="table-4">
+          <caption><a href="#table-4" class="selfRef">Table 4</a></caption>
+<thead>
+            <tr>
+              <th class="text-left" rowspan="1" colspan="1">Resource Server Endpoint</th>
+              <th class="text-left" rowspan="1" colspan="1">
+                <code>x-v</code>
+</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">
+                <code>GET /banking/accounts/{accountId}</code>
+</td>
+              <td class="text-left" rowspan="1" colspan="1">
+                <code>1</code>, <code>2</code> and <code>3</code>
+</td>
+            </tr>
+          </tbody>
+        </table>
+<p id="section-3.3-5">The Provider <span class="bcp14">SHALL</span> make available, as described further in <span>[<a href="#DATARIGHTPLUS-REDOCLY-ID1" class="cite xref">DATARIGHTPLUS-REDOCLY-ID1</a>]</span> endpoints, the following endpoints where the token is granted the <code>bank:regular_payments:read</code> scope value:<a href="#section-3.3-5" class="pilcrow">¶</a></p>
+<table class="center" id="table-5">
+          <caption><a href="#table-5" class="selfRef">Table 5</a></caption>
+<thead>
+            <tr>
+              <th class="text-left" rowspan="1" colspan="1">Resource Server Endpoint</th>
+              <th class="text-left" rowspan="1" colspan="1">
+                <code>x-v</code>
+</th>
+            </tr>
+          </thead>
+          <tbody>
             <tr>
               <td class="text-left" rowspan="1" colspan="1">
                 <code>GET /banking/accounts/direct-debits</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
-                <code>bank:regular_payments:read</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
-                <code>listDirectDebitsBulk</code>
 </td>
               <td class="text-left" rowspan="1" colspan="1">
                 <code>1</code>
@@ -1490,12 +1478,6 @@ svg :is([fill="white"], [fill^="#fff"]) {
                 <code>POST /banking/accounts/direct-debits</code>
 </td>
               <td class="text-left" rowspan="1" colspan="1">
-                <code>bank:regular_payments:read</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
-                <code>listDirectDebitsSpecificAccounts</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
                 <code>1</code>
 </td>
             </tr>
@@ -1504,52 +1486,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
                 <code>GET /banking/accounts/{accountId}/direct-debits</code>
 </td>
               <td class="text-left" rowspan="1" colspan="1">
-                <code>bank:regular_payments:read</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
-                <code>listDirectDebits</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
                 <code>1</code>
 </td>
             </tr>
             <tr>
               <td class="text-left" rowspan="1" colspan="1">
-                <code>GET /banking/payees</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
-                <code>bank:payees:read</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
-                <code>listPayees</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
-                <code>2</code>
-</td>
-            </tr>
-            <tr>
-              <td class="text-left" rowspan="1" colspan="1">
-                <code>GET /banking/payees/{payeeId}</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
-                <code>bank:payees:read</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
-                <code>getPayeeDetail</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
-                <code>1</code> and <code>2</code>
-</td>
-            </tr>
-            <tr>
-              <td class="text-left" rowspan="1" colspan="1">
                 <code>GET /banking/accounts/{accountId}/payments/scheduled</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
-                <code>bank:regular_payments:read</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
-                <code>listScheduledPayments</code>
 </td>
               <td class="text-left" rowspan="1" colspan="1">
                 <code>1</code>
@@ -1560,12 +1502,6 @@ svg :is([fill="white"], [fill^="#fff"]) {
                 <code>POST /banking/payments/scheduled</code>
 </td>
               <td class="text-left" rowspan="1" colspan="1">
-                <code>bank:regular_payments:read</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
-                <code>listScheduledPaymentsSpecificAccounts</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
                 <code>1</code>
 </td>
             </tr>
@@ -1574,24 +1510,56 @@ svg :is([fill="white"], [fill^="#fff"]) {
                 <code>GET /banking/payments/scheduled</code>
 </td>
               <td class="text-left" rowspan="1" colspan="1">
-                <code>bank:regular_payments:read</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
-                <code>listScheduledPaymentsBulk</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
                 <code>1</code>
+</td>
+            </tr>
+          </tbody>
+        </table>
+<p id="section-3.3-7">The Provider <span class="bcp14">SHALL</span> make available, as described further in <span>[<a href="#DATARIGHTPLUS-REDOCLY-ID1" class="cite xref">DATARIGHTPLUS-REDOCLY-ID1</a>]</span> endpoints, the following endpoints where the token is granted the <code>bank:payees:read</code> scope value:<a href="#section-3.3-7" class="pilcrow">¶</a></p>
+<table class="center" id="table-6">
+          <caption><a href="#table-6" class="selfRef">Table 6</a></caption>
+<thead>
+            <tr>
+              <th class="text-left" rowspan="1" colspan="1">Resource Server Endpoint</th>
+              <th class="text-left" rowspan="1" colspan="1">
+                <code>x-v</code>
+</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">
+                <code>GET /banking/payees</code>
+</td>
+              <td class="text-left" rowspan="1" colspan="1">
+                <code>2</code>
 </td>
             </tr>
             <tr>
               <td class="text-left" rowspan="1" colspan="1">
+                <code>GET /banking/payees/{payeeId}</code>
+</td>
+              <td class="text-left" rowspan="1" colspan="1">
+                <code>1</code> and <code>2</code>
+</td>
+            </tr>
+          </tbody>
+        </table>
+<p id="section-3.3-9">The Provider <span class="bcp14">SHALL</span> make available, as described further in <span>[<a href="#DATARIGHTPLUS-REDOCLY-ID1" class="cite xref">DATARIGHTPLUS-REDOCLY-ID1</a>]</span> endpoints, the following endpoints where the token is granted the <code>bank:transactions:read</code> scope value:<a href="#section-3.3-9" class="pilcrow">¶</a></p>
+<table class="center" id="table-7">
+          <caption><a href="#table-7" class="selfRef">Table 7</a></caption>
+<thead>
+            <tr>
+              <th class="text-left" rowspan="1" colspan="1">Resource Server Endpoint</th>
+              <th class="text-left" rowspan="1" colspan="1">
+                <code>x-v</code>
+</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">
                 <code>GET /banking/accounts/{accountId}/transactions</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
-                <code>bank:transactions:read</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
-                <code>getTransactions</code>
 </td>
               <td class="text-left" rowspan="1" colspan="1">
                 <code>1</code>
@@ -1602,24 +1570,17 @@ svg :is([fill="white"], [fill^="#fff"]) {
                 <code>GET /banking/accounts/{accountId}/transactions/{transactionId}</code>
 </td>
               <td class="text-left" rowspan="1" colspan="1">
-                <code>bank:transactions:read</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
-                <code>getTransactionDetail</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
                 <code>1</code>
 </td>
             </tr>
           </tbody>
         </table>
-<p id="section-3.3-3">In addition, the Provider <span class="bcp14">SHALL</span> deliver the following unauthenticated and generally available endpoints, in accordance with <span>[<a href="#DATARIGHTPLUS-REDOCLY" class="cite xref">DATARIGHTPLUS-REDOCLY</a>]</span>:<a href="#section-3.3-3" class="pilcrow">¶</a></p>
-<table class="center" id="table-4">
-          <caption><a href="#table-4" class="selfRef">Table 4</a></caption>
+<p id="section-3.3-11">In addition, the Provider <span class="bcp14">SHALL</span> deliver the following unauthenticated and generally available endpoints, in accordance with <span>[<a href="#DATARIGHTPLUS-REDOCLY-ID1" class="cite xref">DATARIGHTPLUS-REDOCLY-ID1</a>]</span>:<a href="#section-3.3-11" class="pilcrow">¶</a></p>
+<table class="center" id="table-8">
+          <caption><a href="#table-8" class="selfRef">Table 8</a></caption>
 <thead>
             <tr>
               <th class="text-left" rowspan="1" colspan="1">Resource Server Endpoint</th>
-              <th class="text-left" rowspan="1" colspan="1">OpenAPI Operation ID</th>
               <th class="text-left" rowspan="1" colspan="1">
                 <code>x-v</code>
 </th>
@@ -1631,18 +1592,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
                 <code>GET /banking/products</code>
 </td>
               <td class="text-left" rowspan="1" colspan="1">
-                <code>listBankingProducts</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
                 <code>2</code>
 </td>
             </tr>
             <tr>
               <td class="text-left" rowspan="1" colspan="1">
                 <code>GET /banking/products/{productId}</code>
-</td>
-              <td class="text-left" rowspan="1" colspan="1">
-                <code>getBankingProductDetail</code>
 </td>
               <td class="text-left" rowspan="1" colspan="1">
                 <code>3</code> and <code>4</code>
@@ -1672,10 +1627,15 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <li class="compact" id="section-5-2.1">Stuart Low (Biza.io) - Editor<a href="#section-5-2.1" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="section-5-3">We acknowledge the contribution to the <span>[<a href="#CDS" class="cite xref">CDS</a>]</span> of the following individuals:
-- James Bligh (Data Standards Body) - Lead Architect for the Consumer Data Right
-- Mark Verstege (Data Standards Body) - Lead Architect, Banking &amp; Information Security for the Consumer Data Right
-- Ivan Hosgood (formerly Data Standards Body &amp; ACCC) - Solutions Architect<a href="#section-5-3" class="pilcrow">¶</a></p>
+<p id="section-5-3">We acknowledge the contribution to the <span>[<a href="#CDS" class="cite xref">CDS</a>]</span> of the following individuals:<a href="#section-5-3" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="section-5-4.1">James Bligh (Data Standards Body) - Lead Architect for the Consumer Data Right<a href="#section-5-4.1" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="section-5-4.2">Mark Verstege (Data Standards Body) - Lead Architect, Banking &amp; Information Security for the Consumer Data Right<a href="#section-5-4.2" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="section-5-4.3">Ivan Hosgood (formerly Data Standards Body &amp; ACCC) - Solutions Architect<a href="#section-5-4.3" class="pilcrow">¶</a>
+</li>
+      </ul>
 </section>
 </div>
 <section id="section-6">
@@ -1687,13 +1647,13 @@ svg :is([fill="white"], [fill^="#fff"]) {
       <dd>
 <span class="refAuthor">Data Standards Body (Treasury)</span>, <span class="refTitle">"Consumer Data Standards (CDS)"</span>, <span>&lt;<a href="https://consumerdatastandardsaustralia.github.io/standards">https://consumerdatastandardsaustralia.github.io/standards</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="DATARIGHTPLUS-REDOCLY">[DATARIGHTPLUS-REDOCLY]</dt>
+<dt id="DATARIGHTPLUS-REDOCLY-ID1">[DATARIGHTPLUS-REDOCLY-ID1]</dt>
       <dd>
-<span class="refAuthor">Low, S.</span>, <span class="refAuthor">Kolera, B.</span>, and <span class="refAuthor">W. Cai</span>, <span class="refTitle">"DataRight+: Redocly"</span>, <span>&lt;<a href="https://datarightplus.github.io/datarightplus-redocly/">https://datarightplus.github.io/datarightplus-redocly/</a>&gt;</span>. </dd>
+<span class="refAuthor">Low, S.</span>, <span class="refAuthor">Kolera, B.</span>, and <span class="refAuthor">W. Cai</span>, <span class="refTitle">"DataRight+: Redocly (ID1)"</span>, <span>&lt;<a href="https://datarightplus.github.io/datarightplus-redocly/?v=ID1">https://datarightplus.github.io/datarightplus-redocly/?v=ID1</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="DATARIGHTPLUS-ROSETTA">[DATARIGHTPLUS-ROSETTA]</dt>
       <dd>
-<span class="refAuthor">Low, S.</span>, <span class="refTitle">"DataRight+ Rosetta Stone"</span>, <span>&lt;<a href="https://datarightplus.github.io/datarightplus-specs/main/datarightplus-rosetta.html">https://datarightplus.github.io/datarightplus-specs/main/datarightplus-rosetta.html</a>&gt;</span>. </dd>
+<span class="refAuthor">Low, S.</span>, <span class="refTitle">"DataRight+ Rosetta Stone"</span>, <span>&lt;<a href="https://datarightplus.github.io/datarightplus-rosetta/draft-authors-datarightplus-rosetta.html">https://datarightplus.github.io/datarightplus-rosetta/draft-authors-datarightplus-rosetta.html</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
       <dd>
