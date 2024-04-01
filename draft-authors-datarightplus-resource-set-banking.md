@@ -24,7 +24,7 @@ email = "stuart@biza.io"
 
 .# Abstract
 
-This is the resource set profile outlining the banking endpoints utilised across multiple industries.
+This is the resource set profile outlining the banking sector related endpoints.
 
 .# Notational Conventions
 
@@ -34,7 +34,7 @@ The keywords "**REQUIRED**", "**SHALL**", "**SHALL NOT**", "**SHOULD**", "**SHOU
 
 # Scope
 
-The scope of this document is intended to be limited to the shared resource server endpoints, and their associated authorisation contexts.
+The scope of this document is intended to be limited to the resource server endpoints related to banking, and their associated authorisation contexts.
 
 # Terminology
 
