@@ -4,7 +4,7 @@
 
 datarightplus                                                     S. Low
 Internet-Draft                                                   Biza.io
-Intended status: Informational                              1 April 2024
+Intended status: Experimental                               1 April 2024
 Expires: 3 October 2024
 
 
@@ -54,14 +54,14 @@ Table of Contents
 
    1.  Scope
    2.  Terminology
-   3.  Authorisation Scopes
-     3.1.  Overlapping Scope Optimisation
-   4.  Providers
-     4.1.  Authorisation Server
-     4.2.  Resource Server
-   5.  Initiators
-   6.  Acknowledgement
-   7.  Normative References
+   3.  Providers
+     3.1.  Authorisation Server
+       3.1.1.  Authorisation Scopes
+     3.2.  Overlapping Scope Optimisation
+     3.3.  Resource Server
+   4.  Initiators
+   5.  Acknowledgement
+   6.  Normative References
    Author's Address
 
 1.  Scope
@@ -75,13 +75,26 @@ Table of Contents
    This specification utilises the various terms outlined within
    [DATARIGHTPLUS-ROSETTA].
 
-3.  Authorisation Scopes
+3.  Providers
 
-   Technical authorisation scopes are defined between Provider and
-   Initiator and permit access to resource server endpoints.  In
-   addition, this specification also outlines the title and a simple
-   description of the language to use to describe the data set referred
-   to as Data Set Language.
+   Providers are REQUIRED to deliver a number of authorisation and
+   resource server capabilities.
+
+3.1.  Authorisation Server
+
+   In addition to other provisions incorporated within the relevant
+   ecosystem set, the Provider authorisation server SHALL:
+
+   1.  Support the [RFC6749] scope parameter with possible values
+       outlined within Authorisation Scopes (#name-authorisation-
+       scopes);
+
+3.1.1.  Authorisation Scopes
+
+   Possible scope values to be provided by the Initiator to the Provider
+   are documented below.  In addition, this specification also outlines
+   the title and a simple description of the language to use to describe
+   the data set referred to as Data Set Language.
 
    Providers and Initiators SHALL utilise the prescribed authorisation
    scopes and Data Set Language when seeking Consumer authorisation:
@@ -144,7 +157,7 @@ Table of Contents
 
                                  Table 1
 
-3.1.  Overlapping Scope Optimisation
+3.2.  Overlapping Scope Optimisation
 
    In certain situations multiple technical scopes overlap which can
    lead to confusion by the User granting permission for the Consumer
@@ -179,20 +192,7 @@ Table of Contents
 
                                  Table 2
 
-4.  Providers
-
-   Providers are REQUIRED to deliver a number of authorisation and
-   resource server capabilities.
-
-4.1.  Authorisation Server
-
-   In addition to other provisions incorporated within the relevent
-   ecosystem set, the Provider authorisation server SHALL:
-
-   1.  Support the scope parameters outlined within [Authorisation
-       Scopes];
-
-4.2.  Resource Server
+3.3.  Resource Server
 
    The Provider SHALL deliver the following authorisation enabled
    endpoints, in accordance with [DATARIGHTPLUS-REDOCLY]:
@@ -242,26 +242,28 @@ Table of Contents
 
                                   Table 3
 
-   In addition the Provider SHALL deliver the following unauthenticated
+   In addition, the Provider SHALL deliver the following unauthenticated
    and generally available endpoints, in accordance with
    [DATARIGHTPLUS-REDOCLY]:
 
-        +=======================+=========================+=======+
-        | HTTP Endpoint         | OpenAPI Operation ID    | x-v   |
-        +=======================+=========================+=======+
-        | GET /banking/products | listBankingProducts     | 2     |
-        +-----------------------+-------------------------+-------+
-        | GET /banking/         | getBankingProductDetail | 3 and |
-        | products/{productId}  |                         | 4     |
-        +-----------------------+-------------------------+-------+
+      +==========================+=========================+=======+
+      | Resource Server Endpoint | OpenAPI Operation ID    | x-v   |
+      +==========================+=========================+=======+
+      | GET /banking/products    | listBankingProducts     | 2     |
+      +--------------------------+-------------------------+-------+
+      | GET /banking/            | getBankingProductDetail | 3 and |
+      | products/{productId}     |                         | 4     |
+      +--------------------------+-------------------------+-------+
 
-                                  Table 4
+                                 Table 4
 
-5.  Initiators
+4.  Initiators
 
-   This specification contains no additional provisions for Initiators.
+   Initiators SHALL describe the requested scope values using the same
+   Data Set Language as Providers, as outlined in Authorisation Scopes
+   (#name-authorisation-scopes).
 
-6.  Acknowledgement
+5.  Acknowledgement
 
    The following people contributed to this document:
 
@@ -274,7 +276,7 @@ Table of Contents
    - Ivan Hosgood (formerly Data Standards Body & ACCC) - Solutions
    Architect
 
-7.  Normative References
+6.  Normative References
 
    [CDS]      Data Standards Body (Treasury), "Consumer Data Standards
               (CDS)", <https://consumerdatastandardsaustralia.github.io/
@@ -293,6 +295,10 @@ Table of Contents
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
+
+   [RFC6749]  Hardt, D., "The OAuth 2.0 Authorization Framework",
+              October 2012,
+              <https://datatracker.ietf.org/doc/html/rfc6749>.
 
 Author's Address
 
