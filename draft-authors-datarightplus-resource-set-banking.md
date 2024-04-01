@@ -42,7 +42,7 @@ This specification utilises the various terms outlined within [@!DATARIGHTPLUS-R
 
 # Providers
 
-Providers are **REQUIRED** to deliver a number of authorisation and resource server capabilities.
+Providers which providing banking services are expected to deliver a number of resource server end points.
 
 ## Authorisation Server
 
@@ -52,9 +52,7 @@ In addition to other provisions incorporated within the relevant ecosystem set, 
 
 ### Authorisation Scopes
 
-Possible `scope` values to be provided by the Initiator to the Provider are documented below. In addition, this specification also outlines the title and a simple description of the language to use to describe the data set referred to as Data Set Language.
-
-Providers and Initiators **SHALL** utilise the prescribed authorisation scopes and Data Set Language when seeking Consumer authorisation:
+The Provider authorisation server **SHALL** utilise the following Data Set Language when seeking Consumer authorisation from a User for specific `scope` values:
 
 | `scope` value                | Data Set Language                                                                                                         |
 |------------------------------|---------------------------------------------------------------------------------------------------------------------------|
@@ -83,9 +81,7 @@ Providers and Initiators **SHALL** utilise the prescribed authorisation scopes a
 
 ## Overlapping Scope Optimisation
 
-In certain situations multiple technical scopes overlap which can lead to confusion by the User granting permission for the Consumer (which may be themselves or an Entity they represent).
-
-Data Cluster Language presentation **SHALL** be collapsed for the following pairs of `scope` values:
+Alternative Data Cluster Language **SHALL** be used when pairs of `scope` value are used as follows:
 
 | `scope` pairing                | Data Set Language               |
 |--------------------------------|---------------------------------|
@@ -102,32 +98,57 @@ Data Cluster Language presentation **SHALL** be collapsed for the following pair
 
 ## Resource Server
 
-The Provider **SHALL** deliver the following authorisation enabled endpoints, in accordance with [@!DATARIGHTPLUS-REDOCLY]:
+The Provider **SHALL** make available, as described further in [@!DATARIGHTPLUS-REDOCLY-ID1] endpoints, the following endpoints where the token is granted the `bank:accounts.basic:read` scope value:
 
-| Resource Server Endpoint                                         | Authorisation Scope          | OpenAPI Operation ID                    | `x-v`            |
-|------------------------------------------------------------------|------------------------------|-----------------------------------------|------------------|
-| `GET /banking/accounts`                                          | `bank:accounts.basic:read`   | `listBankingAccounts`                   | `1` and `2`      |
-| `GET /banking/accounts/{accountId}`                              | `bank:accounts.detail:read`  | `getBankingAccountDetail`               | `1`, `2` and `3` |
-| `GET /banking/accounts/balances`                                 | `bank:accounts.basic:read`   | `listBankingBalancesBulk`               | `1`              |
-| `POST /banking/accounts/balances`                                | `bank:accounts.basic:read`   | `listBalancesSpecificBankingAccounts`   | `1`              |
-| `GET /banking/accounts/{accountId}/balance`                      | `bank:accounts.basic:read`   | `getBankingBalance`                     | `1`              |
-| `GET /banking/accounts/direct-debits`                            | `bank:regular_payments:read` | `listDirectDebitsBulk`                  | `1`              |
-| `POST /banking/accounts/direct-debits`                           | `bank:regular_payments:read` | `listDirectDebitsSpecificAccounts`      | `1`              |
-| `GET /banking/accounts/{accountId}/direct-debits`                | `bank:regular_payments:read` | `listDirectDebits`                      | `1`              |
-| `GET /banking/payees`                                            | `bank:payees:read`           | `listPayees`                            | `2`              |
-| `GET /banking/payees/{payeeId}`                                  | `bank:payees:read`           | `getPayeeDetail`                        | `1` and `2`      |
-| `GET /banking/accounts/{accountId}/payments/scheduled`           | `bank:regular_payments:read` | `listScheduledPayments`                 | `1`              |
-| `POST /banking/payments/scheduled`                               | `bank:regular_payments:read` | `listScheduledPaymentsSpecificAccounts` | `1`              |
-| `GET /banking/payments/scheduled`                                | `bank:regular_payments:read` | `listScheduledPaymentsBulk`             | `1`              |
-| `GET /banking/accounts/{accountId}/transactions`                 | `bank:transactions:read`     | `getTransactions`                       | `1`              |
-| `GET /banking/accounts/{accountId}/transactions/{transactionId}` | `bank:transactions:read`     | `getTransactionDetail`                  | `1`              |
+| Resource Server Endpoint                                         | `x-v`            |
+|------------------------------------------------------------------|------------------|
+| `GET /banking/accounts`                                          | `1` and `2`      |
+| `GET /banking/accounts/balances`                                 | `1`              |
+| `POST /banking/accounts/balances`                                | `1`              |
+| `GET /banking/accounts/{accountId}/balance`                      | `1`              |
 
-In addition, the Provider **SHALL** deliver the following unauthenticated and generally available endpoints, in accordance with [@!DATARIGHTPLUS-REDOCLY]:
+The Provider **SHALL** make available, as described further in [@!DATARIGHTPLUS-REDOCLY-ID1] endpoints, the following endpoints where the token is granted the `bank:accounts.detail:read` scope value:
 
-| Resource Server Endpoint            | OpenAPI Operation ID      | `x-v`       |
-|-------------------------------------|---------------------------|-------------|
-| `GET /banking/products`             | `listBankingProducts`     | `2`         |
-| `GET /banking/products/{productId}` | `getBankingProductDetail` | `3` and `4` |
+| Resource Server Endpoint                                         | `x-v`            |
+|------------------------------------------------------------------|------------------|
+| `GET /banking/accounts/{accountId}`                              | `1`, `2` and `3` |
+
+The Provider **SHALL** make available, as described further in [@!DATARIGHTPLUS-REDOCLY-ID1] endpoints, the following endpoints where the token is granted the `bank:regular_payments:read` scope value:
+
+| Resource Server Endpoint                                         | `x-v`            |
+|------------------------------------------------------------------|------------------|
+| `GET /banking/accounts/direct-debits`                            | `1`              |
+| `POST /banking/accounts/direct-debits`                           | `1`              |
+| `GET /banking/accounts/{accountId}/direct-debits`                | `1`              |
+| `GET /banking/accounts/{accountId}/payments/scheduled`           | `1`              |
+| `POST /banking/payments/scheduled`                               | `1`              |
+| `GET /banking/payments/scheduled`                                | `1`              |
+
+
+The Provider **SHALL** make available, as described further in [@!DATARIGHTPLUS-REDOCLY-ID1] endpoints, the following endpoints where the token is granted the `bank:payees:read` scope value:
+
+| Resource Server Endpoint                                         | `x-v`            |
+|------------------------------------------------------------------|------------------|
+| `GET /banking/payees`                                            | `2`              |
+| `GET /banking/payees/{payeeId}`                                  | `1` and `2`      |
+
+
+The Provider **SHALL** make available, as described further in [@!DATARIGHTPLUS-REDOCLY-ID1] endpoints, the following endpoints where the token is granted the `bank:transactions:read` scope value:
+
+| Resource Server Endpoint                                         | `x-v`            |
+|------------------------------------------------------------------|------------------|
+| `GET /banking/accounts/{accountId}/transactions`                 | `1`              |
+| `GET /banking/accounts/{accountId}/transactions/{transactionId}` | `1`              |
+
+
+
+
+In addition, the Provider **SHALL** deliver the following unauthenticated and generally available endpoints, in accordance with [@!DATARIGHTPLUS-REDOCLY-ID1]:
+
+| Resource Server Endpoint            | `x-v`       |
+|-------------------------------------|-------------|
+| `GET /banking/products`             | `2`         |
+| `GET /banking/products/{productId}` | `3` and `4` |
 
 # Initiators
 
@@ -140,16 +161,17 @@ The following people contributed to this document:
 - Stuart Low (Biza.io) - Editor
 
 We acknowledge the contribution to the [@!CDS] of the following individuals:
+
 - James Bligh (Data Standards Body) - Lead Architect for the Consumer Data Right
 - Mark Verstege (Data Standards Body) - Lead Architect, Banking & Information Security for the Consumer Data Right
 - Ivan Hosgood (formerly Data Standards Body & ACCC) - Solutions Architect
 
 {backmatter}
 
-<reference anchor="DATARIGHTPLUS-REDOCLY" target="https://datarightplus.github.io/datarightplus-redocly/"> <front><title>DataRight+: Redocly</title><author initials="S." surname="Low" fullname="Stuart Low"><organization>Biza.io</organization></author><author initials="B." surname="Kolera" fullname="Ben Kolera"><organization>Biza.io</organization></author>
+<reference anchor="DATARIGHTPLUS-REDOCLY-ID1" target="https://datarightplus.github.io/datarightplus-redocly/?v=ID1"> <front><title>DataRight+: Redocly (ID1)</title><author initials="S." surname="Low" fullname="Stuart Low"><organization>Biza.io</organization></author><author initials="B." surname="Kolera" fullname="Ben Kolera"><organization>Biza.io</organization></author>
 <author initials="W." surname="Cai" fullname="Wei Cai"><organization>Biza.io</organization></author></front> </reference>
 
-<reference anchor="DATARIGHTPLUS-ROSETTA" target="https://datarightplus.github.io/datarightplus-specs/main/datarightplus-rosetta.html"> <front><title>DataRight+ Rosetta Stone</title><author initials="S." surname="Low" fullname="Stuart Low"><organization>Biza.io</organization></author></front> </reference>
+<reference anchor="DATARIGHTPLUS-ROSETTA" target="https://datarightplus.github.io/datarightplus-rosetta/draft-authors-datarightplus-rosetta.html"> <front><title>DataRight+ Rosetta Stone</title><author initials="S." surname="Low" fullname="Stuart Low"><organization>Biza.io</organization></author></front> </reference>
 
 <reference anchor="CDS" target="https://consumerdatastandardsaustralia.github.io/standards"><front><title>Consumer Data Standards (CDS)</title><author><organization>Data Standards Body (Treasury)</organization></author></front> </reference>
 
